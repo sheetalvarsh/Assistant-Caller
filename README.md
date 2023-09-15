@@ -1,7 +1,6 @@
 
-# Project Specification: 
-# Multi-Modal Chatbot Application
-# Voice-Bot
+Project Specification: 
+# Multi-Modal Chatbot Application: Voice-Bot
 
 Overview
 
