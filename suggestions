@@ -1,0 +1,45 @@
+import pocketsphinx
+import os
+
+# Configure PocketSphinx
+config = pocketsphinx.Decoder.default_config()
+config.set_string('-hmm', '/path/to/acoustic/model')
+config.set_string('-lm', '/path/to/language/model')
+config.set_string('-dict', '/path/to/dictionary')
+
+# Initialize the decoder
+decoder = pocketsphinx.Decoder(config)
+
+# Read and decode an audio file
+audio_file = '/path/to/audio/file.wav'
+with open(audio_file, 'rb') as audio:
+    decoder.start_utt()
+    while True:
+        buf = audio.read(1024)
+        if buf:
+            decoder.process_raw(buf, False, False)
+        else:
+            break
+    decoder.end_utt()
+
+# Get the recognized text
+recognized_text = decoder.hyp().hypstr
+print("Recognized Text:", recognized_text)
+
+
+# Speech Synthesis using pyttsx3
+import pyttsx3
+
+# Initialize the TTS engine
+engine = pyttsx3.init()
+
+# Set properties (optional)
+engine.setProperty("rate", 150)  # Speed of speech (words per minute)
+engine.setProperty("volume", 1.0)  # Volume (0.0 to 1.0)
+
+# Text to be converted to speech
+text = "Hello, this is an example of text-to-speech synthesis using pyttsx3."
+
+# Convert text to speech and play it
+engine.say(text)
+engine.runAndWait()
