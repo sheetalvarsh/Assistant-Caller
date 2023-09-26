@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+  <form name="chatbot-form" method="POST" action="/text-to-speech">
+    <div class="history-container">
+      <!-- <div class="history-messages"> -->
+      <div class="sender-container"></div>
+      <div class="receiver-container"></div>
+
+      <span>{{user_audio}}</span>
+    </div>
+    </div>
+
+    <div class="input-container">
+      <div class="message-container">
+        <input type="text" class="message-input" name="message-input" placeholder="Type your message...">
+        <button class="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i> </button>
+        <button class="microphone-button"><i class="fa fa-microphone" aria-hidden="true"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- <script src="./script.js" async defer></script> -->
+</body>
+
+</html>
