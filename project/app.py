@@ -15,7 +15,7 @@ def text_to_speech():
        
         # Convert the message to speech using gTTS
         tts = gTTS(message, lang='en')
-        audio_path = 'project/static/audio/output.mp3'
+        audio_path = 'project/static/audio/output.ogg'
         tts.save(audio_path)
 
         # return jsonify({'audio_url': audio_path})

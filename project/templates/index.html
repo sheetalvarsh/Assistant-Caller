@@ -22,11 +22,18 @@
 <body>
   <form name="chatbot-form" method="POST" action="/text-to-speech">
     <div class="history-container">
-      <!-- <div class="history-messages"> -->
       <div class="sender-container"></div>
       <div class="receiver-container"></div>
 
-      <span>{{user_audio}}</span>
+      <!-- Need to work on this -->
+      <!-- Need to work on UI -->
+      <!-- I tried with JS at first but ran into some issues, so switched to only html -->
+      <!-- I am not able to implement how to store the history of messages -->
+
+      <audio controls>
+        <source src="../static/audio/output.ogg" type="audio/ogg">
+        Your browser does not support the audio tag.
+      </audio>
     </div>
     </div>
 
