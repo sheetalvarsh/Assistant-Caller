@@ -14,7 +14,6 @@ body {
     position: relative;
 
     .history-container {
-      border: 1px solid #ccc;
       padding: 8px;
       display: flex;
       flex-direction: column;
@@ -51,7 +50,6 @@ body {
     display: flex;
     flex-direction: column;
     bottom: 0;
-
 
     .message-container {
       display: flex;

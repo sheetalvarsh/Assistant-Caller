@@ -22,6 +22,22 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the audio element
+      var audioElement = document.querySelector("audio");
+      // Check if audio exists and has a source
+      if (audioElement && audioElement.src) {
+        // Display the audio container
+        document.querySelector(".audio-container").style.display = "block";
+      } else {
+        // Hide the audio container
+        document.querySelector(".audio-container").style.display = "none";
+      }
+    });
+  </script> -->
+
+    <script src="../static/script.js" async defer></script>
 
 </head>
 
@@ -32,29 +48,33 @@
         <div class="message-container sender"></div>
         <div class="message-container receiver"></div>
 
-        <!-- Need to work on this -->
-        <!-- Need to work on UI -->
-        <!-- I tried with JS at first but ran into some issues, so switched to only html -->
-        <!-- I am not able to implement how to store the history of messages -->
-
-        <audio controls>
-          <source src="../static/audio/output.ogg" type="audio/ogg">
-          Your browser does not support the audio tag.
-        </audio>
+        <div class="audio-container">
+          <audio controls>
+            <source src="{{ user_audio }}" type="audio/ogg">
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
       </div>
 
+      <div class="output-container">
+        <p id="output-text" name="output-text" readonly></textarea>
+      </div>
     </div>
 
     <div class="input-container">
       <div class="message-container">
         <input type="text" class="message-input" name="message-input" placeholder="Type your message...">
-        <button class="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i> </button>
-        <button class="microphone-button"><i class="fa fa-microphone" aria-hidden="true"></i> </button>
+        <button class="send-button" onclick="textToSpeech()"><i class="fa fa-paper-plane" aria-hidden="true"></i> </button>
+        
+        <input type="file" name="file"/>
+        
+        <button class="microphone-button" onclick="speechToText()"><i class="fa fa-microphone"
+            aria-hidden="true"></i> </button>
       </div>
     </div>
   </form>
 
-  <!-- <script src="./script.js" async defer></script> -->
+
 </body>
 
 </html>

@@ -1,63 +1,50 @@
+function textToSpeech() {
+  // Get the text input
+  var messageInput = document.getElementById('message-input').value;
 
-if (document.readyState !== 'loading') {
-  console.log('document is already ready, just execute code here');
-  myInitCode();
-} else {
-  document.addEventListener('DOMContentLoaded', function () {
-    console.log('document was not ready, place code here');
-    myInitCode();
-  });
+  // Send a POST request for text-to-speech
+  fetch('/text-to-speech', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'message-input=' + encodeURIComponent(messageInput),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Update the recognized text in the textarea
+      document.getElementById('output-text').value = data.recognized_text;
+
+      // Set the audio source to the generated audio
+      document.querySelector("audio source").src = data.user_audio;
+
+      // Update the audio player
+      var audio = document.querySelector("audio");
+      audio.load();
+      audio.play();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
+function speechToText() {
+  var audioInput = document.getElementById('audio-input').files[0];
 
-function myInitCode() {
-  const messageContainer = document.getElementById('message-container');
-  const senderContainer = document.querySelector('.sender-container');
-  const receiverContainer = document.querySelector('.receiver-container');
-  const messageInput = document.querySelector('.message-input');
-  const sendButton = document.querySelector('.send-button');
+  var formData = new FormData();
+  formData.append('audio-input', audioInput);
 
-  sendButton.addEventListener('click', function () {
-
-    const userMessage = messageInput.value.trim();
-    console.error(userMessage);
-    if (userMessage !== '') {
-      // Append user message to the chat container
-      appendMessage('sender', userMessage);
-      // Clear the input field
-      messageInput.value = '';
-
-      // Send the user message to the server for text-to-speech conversion
-      fetch('/text-to-speech', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: userMessage }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Play the received audio
-          const audio = new Audio(data.audio_url);
-          audio.play();
-
-          // Display the chatbot's response (simulated)
-          setTimeout(function () {
-            const chatbotResponse = 'This is a chatbot response.';
-            appendMessage('receiver', chatbotResponse);
-          }, 1000);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
-  });
-
-  function appendMessage(sender, message) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add(sender);
-    messageDiv.textContent = message;
-    console.error(message);
-    messageContainer.appendChild(messageDiv);
-  }
+  // Send a POST request for speech-to-text
+  fetch('/speech-to-text', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Update the recognized text in the textarea
+      document.getElementById('output-text').value = data.recognized_text;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
