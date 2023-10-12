@@ -1,12 +1,11 @@
-import time
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from gtts import gTTS
-from speech_recognition import recognize_speech
+# from speech_recognition import recognize_speech
 import os
 
-import pyttsx3
+# import pyttsx3
 import soundfile as sf
-import pygame
+# import pygame
 
 audio_messages = []  # Initialize an empty list to store message history
 
