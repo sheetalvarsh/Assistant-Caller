@@ -9,9 +9,10 @@ body {
   align-items: center;
 
   .fluid-container {
-    height: 35rem;
+    height: 33rem;
     background-color: #cde4ff;
     position: relative;
+    overflow-y: scroll;
 
     .history-container {
       padding: 8px;
