@@ -38,7 +38,7 @@
             {% for user_audio in audio_messages %}
             <li>
               <audio controls>
-                <source src="{{ url_for('static', filename=user_audio) }}" type="audio/ogg">
+                <source src="/get-audio/{{ user_audio }}" type="audio/ogg">
                 Your browser does not support the audio tag.
               </audio>
             </li>
@@ -47,7 +47,6 @@
         </div>
       </div>
 
-
       <div class="output-container">
         <p id="output-text" name="output-text" readonly></textarea>
       </div>
@@ -55,12 +54,9 @@
 
     <div class="input-container">
       <div class="message-container">
-        <input type="text" class="message-input" name="message-input" placeholder="Type your message...">
-        <button class="send-button" onclick="textToSpeech()"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-        </button>
-
-        <!-- <input type="file" accept="audio/*" id="audio-input" name="audio-input"> -->
-        <button class="microphone-button" onclick="speechToText()"><i class="fa fa-microphone" aria-hidden="true"></i>
+        <input type="text" class="message-input" id="message-input" placeholder="Type your message...">
+        <button class="send-button" type="button" onclick="textToSpeech()">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
         </button>
       </div>
     </div>
