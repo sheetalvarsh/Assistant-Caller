@@ -4,13 +4,13 @@ Project Specification:
 
 Overview
 
-This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly. Additionally, an advanced Natural Language Processing (NLP)-based chatbot will be integrated to enable context-aware and interactive conversations.
+This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly. 
 
 Problem Space
 
 This project aims to solve the issue of managing calls while engaged in other activities. It helps individuals avoid distractions and ensures a safer interaction with callers when answering isn't feasible.
 
-Version 1: Speech-to-Text and Text-to-Speech
+Version 1: Text-to-Speech Conversions and message storage
 
 This initial version of the application will be designed as a web-based platform. Users can provide input in speech, which will be converted into text. Subsequently, this text will be transformed back into speech, allowing users to audibly hear the chatbot's responses. This version focuses on creating a web interface for seamless speech-to-text and text-to-speech interactions, enhancing user engagement and accessibility.
 
@@ -23,7 +23,7 @@ Features
 Purpose
 
 •	Enhance User Accessibility: Provide a user-friendly platform for speech-based interactions.
-•	Improve User Experience: Ensure clear and comprehensible communication by converting text responses into speech.
+•	Improve User Experience: Ensure clear and comprehensible communication by converting text responses into text and speech.
 
 -------------------------------------------------------------------------------------
 Task Vignettes (User activity "flow")
@@ -66,23 +66,28 @@ Technical Flow
 2.	Implement a speech recognition module (e.g., using libraries or APIs) to capture user speech inputs.
 3.	Utilize speech recognition technology to convert captured speech into text format.
 4.	Process the text input and forward it to the chatbot module for further handling.
-5.	Utilize text-to-speech technology to transform chatbot responses into audible speech.
-6.	Users can communicate with the chatbot using both speech and text inputs.
-7.	The chatbot provides audible responses to users' queries and statements.
+5.	Users can convert messages via this platform in both speech and text inputs.
 
 -------------------------------------------------------------------------------------
 Technologies and Tools
 
 •	Speech Recognition: Utilize speech recognition libraries or APIs (such as Whisper).
 •	Text-to-Speech: Integrate text-to-speech engines for speech synthesis.
-•	NLP Frameworks: Implement NLP using Python libraries (e.g., PocketSphinx, TTS engine, etc.).
 •	Web Development: Create a user-friendly web interface using HTML, CSS, and JavaScript.
 •	Version Control: Use Git for project management and version control.
 
 -------------------------------------------------------------------------------------
-Version 2: NLP-Based Chatbot
+Version 2: Speech-to-Text conversions and message storage
 
-In the second iteration of this application, an NLP-based chatbot will be implemented. This chatbot will facilitate dynamic two-way conversations between users and the system. Users can continue to utilize speech and text recognition for input, but now they will also experience advanced natural language processing capabilities, enabling context-aware and context-rich interactions. This version elevates user engagement and delivers more intuitive and meaningful conversations.
+In this next phase of development, I will be introducing a new feature of speech-to-text to further enhance the capabilities of this application:
+
+•	Speech-to-Text Conversion: I will implement a feature that enables users to convert spoken language into text. This means that users can simply speak into their microphone, and the chatbot will instantly transcribe their words into text for processing.
+•	Live Microphone Input: With this feature, users will be able to engage with the chatbot in real time by using a live microphone input. It will provide a convenient and hands-free way to interact with the chatbot.
+•	Message Logging in CSV Format: I will also implement a system to store all chatbot interactions, including both text-to-speech and speech-to-text messages, in a CSV file. This will allow users to keep a record of their conversation history and review past interactions with the chatbot.
+
+These enhancements are aimed at making the chatbot application more versatile and comprehensive, ultimately providing a more engaging and user-friendly experience.
+
+
 
 
 
