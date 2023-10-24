@@ -1,5 +1,12 @@
 ### AL ###
 #Template for AL projects for Dynamics 365 Business Central
+
+# audio files folder
+static/audio/
+
+# Ignore all files with .ogg extension inside static/audio
+static/audio/*.ogg
+
 #launch.json folder
 .vscode/
 #Cache folder

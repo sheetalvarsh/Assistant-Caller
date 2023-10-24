@@ -31,13 +31,13 @@
       <div class="history-container">
         <div class="message-container sender"></div>
         <div class="message-container receiver"></div>
-        <div class="audio-container" {% if audio_messages %}style="display: block;" {% else %}style="display: none;" {%
+        <div class="audio-container" {% if audioMessages %}style="display: block;" {% else %}style="display: none;" {%
           endif %}>
           <ul style="list-style-type: none;">
-            {% for user_audio in audio_messages %}
+            {% for audioMessage in audioMessages %}
             <li>
               <audio controls>
-                <source src="{{ url_for('get_audio', filename=user_audio) }}" type="audio/ogg">
+                <source src="{{ url_for('get_audio', filename=audioMessage['AudioFileName']) }}" type="audio/ogg">
                 Your browser does not support the audio tag.
               </audio>
             </li>
