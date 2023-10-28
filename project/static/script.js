@@ -45,6 +45,62 @@ function textToSpeech() {
     });
 }
 
+//getting audio message for speech-to-text
+const audioChunks = [];
+let mediaRecorder;
+
+const startRecordingButton = document.getElementById('startRecording');
+const stopRecordingButton = document.getElementById('stopRecording');
+
+startRecordingButton.addEventListener('click', () => {
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then((stream) => {
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        sendAudioData(audioBlob);
+        audioChunks.length = 0;
+      };
+
+      mediaRecorder.start();
+      startRecordingButton.disabled = true;
+      stopRecordingButton.disabled = false;
+    })
+    .catch((error) => {
+      console.error("Error accessing the microphone: ", error);
+    });
+});
+
+stopRecordingButton.addEventListener('click', () => {
+  mediaRecorder.stop();
+  startRecordingButton.disabled = false;
+  stopRecordingButton.disabled = true;
+});
+
+function sendAudioData(audioBlob) {
+  console.error('inside send', audioBlob);
+  const formData = new FormData();
+  formData.append('audio', audioBlob);
+
+  fetch('/upload_audio', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error sending audio data to the server: ', error);
+    });
+}
+
 function speechToText() {
   var audioInput = document.getElementById('audio-input').files[0];
 

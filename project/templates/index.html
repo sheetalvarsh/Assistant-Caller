@@ -29,12 +29,18 @@
   <div class="input-container">
     <div class="message-container">
       <input type="text" class="message-input" id="message-input" placeholder="Type your message...">
-      <a class="mic" type="button" onclick="speechToText()">
-        <i class="fa fa-microphone" aria-hidden="true"></i>
-      </a>
+
       <button class="send-button" type="button" onclick="textToSpeech()">
         <i class="fa fa-paper-plane" aria-hidden="true"></i>
       </button>
+      <div class="mic">
+        <button class="start-record" id="startRecording" type="button">
+          <i class="fas fa-microphone-alt"></i> 
+        </button>
+        <button class="stop-record" id="stopRecording" type="button" disabled>
+          <i class="fa-regular fa-circle-stop"></i>
+        </button>
+      </div>
     </div>
   </div>
 </form>

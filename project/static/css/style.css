@@ -63,8 +63,26 @@ body {
 
       .mic {
         font-size: 29px;
-        color: #007bff !important;
         padding-right: 10px !important;
+
+
+        .start-record {
+          color: #1877d7 !important;
+          border: none;
+          background-color: white;
+        }
+
+        .stop-record {
+          color: #df0000;
+          border: none;
+          background-color: white;
+        }
+
+        .stop-record:disabled {
+          color: grey;
+          border: none;
+          background-color: white;
+        }
       }
     }
 
