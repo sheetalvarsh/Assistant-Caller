@@ -9,7 +9,7 @@ body {
   align-items: center;
 
   .fluid-container {
-    height: 33rem;
+    height: 38rem;
     background-color: #cde4ff;
     position: relative;
     overflow-y: scroll;
@@ -60,6 +60,12 @@ body {
       border: 1px solid #ccc;
       border-radius: 41px;
       padding: 10px;
+
+      .mic {
+        font-size: 29px;
+        color: #007bff !important;
+        padding-right: 10px !important;
+      }
     }
 
     .message-input {
