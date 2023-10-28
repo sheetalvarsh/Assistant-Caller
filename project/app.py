@@ -91,28 +91,36 @@ def upload_audio():
     audio_data = request.files['audio']
     
     if audio_data:
-        # Convert the uploaded audio data to an AudioSegment
-        audio = AudioSegment.from_file(BytesIO(audio_data.read()))
-        
-        # Convert to WAV format
-        audio = audio.set_channels(1)  # Set to mono if needed
-        audio = audio.set_frame_rate(16000)  # Set the desired sample rate
-        audio = audio.set_sample_width(2)  # Set the desired sample width
-        
-        # Save the converted audio to disk
-        audio.export(os.path.join(speech_audio_directory, 'converted_audio.wav'), format='wav')
-        
-        # Perform speech recognition on the audio using Recognizer
-        r = sr.Recognizer()
-        with sr.AudioFile('converted_audio.wav') as source:
-            audio_data = r.record(source)
-            text = r.recognize_google(audio_data)
-        
-        # Store the recognized text in session storage
-        session['text'] = text
-        print(text)
-    
-    return jsonify({'text': text})
+        try:
+            # Convert the uploaded audio data to an AudioSegment
+            audio = AudioSegment.from_file(BytesIO(audio_data.read()))
+            
+            # Convert to WAV format
+            audio = audio.set_channels(1)  # Set to mono if needed
+            audio = audio.set_frame_rate(16000)  # Set the desired sample rate
+            audio = audio.set_sample_width(2)  # Set the desired sample width
+            
+            # Save the converted audio to disk
+            audio.export(f'{speech_audio_directory}/converted_audio.wav', format='wav')
+
+            # Perform speech recognition on the audio using Recognizer
+            r = sr.Recognizer()
+            with sr.AudioFile(f'{speech_audio_directory}/converted_audio.wav') as source:
+                audio_data = r.record(source)
+                text = r.recognize_google(audio_data)
+            
+            # Store the recognized text in session storage
+            session['text'] = text
+            print(text)
+            return jsonify({'text': text})
+        except sr.UnknownValueError:
+            text = "Speech recognition could not understand the audio."
+            return jsonify({'text': text})
+        except sr.RequestError as e:
+            text = f"Could not request results from Google Web Speech API; {e}"
+            return jsonify({'text': text})
+    else:
+        return jsonify({'text': 'No audio data received'})
 
 if __name__ == '__main__':
     app.run(debug=True)

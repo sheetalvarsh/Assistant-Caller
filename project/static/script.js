@@ -85,6 +85,7 @@ stopRecordingButton.addEventListener('click', () => {
 
 function sendAudioData(audioBlob) {
   console.error('inside send', audioBlob);
+
   const formData = new FormData();
   formData.append('audio', audioBlob);
 
@@ -101,23 +102,23 @@ function sendAudioData(audioBlob) {
     });
 }
 
-function speechToText() {
-  var audioInput = document.getElementById('audio-input').files[0];
+// function speechToText() {
+//   var audioInput = document.getElementById('audio-input').files[0];
 
-  var formData = new FormData();
-  formData.append('audio-input', audioInput);
+//   var formData = new FormData();
+//   formData.append('audio-input', audioInput);
 
-  // Send a POST request for speech-to-text
-  fetch('/speech-to-text', {
-    method: 'POST',
-    body: formData,
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Update the recognized text in the textarea
-      document.getElementById('output-text').value = data.recognized_text;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
+//   // Send a POST request for speech-to-text
+//   fetch('/speech-to-text', {
+//     method: 'POST',
+//     body: formData,
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       // Update the recognized text in the textarea
+//       document.getElementById('output-text').value = data.recognized_text;
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// }
