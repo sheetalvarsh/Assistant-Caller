@@ -96,6 +96,13 @@ function sendAudioData(audioBlob) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+
+      // Update the recognized text in the HTML element
+      const outputTextElement = document.getElementById('output-text');
+      if (outputTextElement) {
+        outputTextElement.innerHTML = data.text;
+      }
+
     })
     .catch((error) => {
       console.error('Error sending audio data to the server: ', error);
