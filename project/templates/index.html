@@ -19,11 +19,13 @@
           {% endfor %}
         </ul>
       </div>
+      
+      <div class="speech-output-container">
+        <p id="output-text" name="output-text" readonly></textarea>
+      </div>
     </div>
 
-    <div class="output-container">
-      <p id="output-text" name="output-text" readonly></textarea>
-    </div>
+
   </div>
 
   <div class="input-container">
@@ -35,7 +37,7 @@
       </button>
       <div class="mic">
         <button class="start-record" id="startRecording" type="button">
-          <i class="fas fa-microphone-alt"></i> 
+          <i class="fas fa-microphone-alt"></i>
         </button>
         <button class="stop-record" id="stopRecording" type="button" disabled>
           <i class="fa-regular fa-circle-stop"></i>

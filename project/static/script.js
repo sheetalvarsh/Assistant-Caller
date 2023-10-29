@@ -108,24 +108,3 @@ function sendAudioData(audioBlob) {
       console.error('Error sending audio data to the server: ', error);
     });
 }
-
-// function speechToText() {
-//   var audioInput = document.getElementById('audio-input').files[0];
-
-//   var formData = new FormData();
-//   formData.append('audio-input', audioInput);
-
-//   // Send a POST request for speech-to-text
-//   fetch('/speech-to-text', {
-//     method: 'POST',
-//     body: formData,
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       // Update the recognized text in the textarea
-//       document.getElementById('output-text').value = data.recognized_text;
-//     })
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-// }
