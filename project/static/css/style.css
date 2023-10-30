@@ -41,12 +41,18 @@ body {
       }
 
       .speech-output-container {
-        background: #2b2b2b;
-        width: 50%;
-        border-radius: 50px;
-        color: white;
-        padding: 13px 20px 0px 20px;
-        text-align: justify;
+        .speech-text {
+          background: #2b2b2b;
+          width: 50%;
+          border-radius: 50px;
+          color: white;
+          text-align: justify;
+
+          #speech-output-text {
+            padding: 12px;
+          }
+        }
+
       }
     }
   }

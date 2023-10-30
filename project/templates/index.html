@@ -19,9 +19,16 @@
           {% endfor %}
         </ul>
       </div>
-      
-      <div class="speech-output-container">
-        <p id="output-text" name="output-text" readonly></textarea>
+
+      <div class="speech-output-container" {% if speech_messages %}style="display: block;" {% else
+        %}style="display: none;" {% endif %}>
+        <div style="float: right; width: 45%;">
+          {% for speech_message in speech_messages %}
+          <div class="speech-text w-100">
+            <p id="speech-output-text">{{ speech_message }}</p>
+          </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
 

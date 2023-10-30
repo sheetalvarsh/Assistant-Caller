@@ -19,10 +19,11 @@ if not os.path.exists(speech_audio_directory):
     os.makedirs(speech_audio_directory)
 
 audio_messages = []
+speech_messages = []
 
 @app.route('/')
 def index():
-    return render_template('index.html', audio_messages=audio_messages)
+    return render_template('index.html', audio_messages=audio_messages, speech_messages=speech_messages)
 
 @app.route('/text-to-speech', methods=['POST'])
 def text_to_speech():
@@ -62,30 +63,6 @@ def get_audio(filename):
 def get_audio_messages():
     return jsonify({'audio_messages': audio_messages})
 
-# Speech to text 
-# @app.route('/speech-to-text', methods=['POST'])
-# def speech_to_text():
-#     try:
-#         audio_file = request.files['audio-input']
-#         if not audio_file:
-#             return jsonify({'error': 'No audio file provided'})
-
-#         input_audio_path = 'project/static/audio/input.wav'
-#         audio_file.save(input_audio_path)
-#         print(input_audio_path)
-
-#         # Perform speech recognition using the separate module
-#         recognized_text = recognize_speech(input_audio_path)
-#         print('msg-', recognized_text)
-
-#         return jsonify({'recognized_text': recognized_text})
-#     except Exception as e:
-#         return jsonify({'error': str(e)})
-
-# @app.route('/static/<path:filename>')
-# def download_file(filename):
-#     return send_from_directory('static', filename)
-
 @app.route('/upload_audio', methods=['POST'])
 def upload_audio():
     audio_data = request.files['audio']
@@ -111,10 +88,14 @@ def upload_audio():
             
             # Store the recognized text in session storage
             session['text'] = text
-            print(text)
+            
+            # Store the recognized speech in speech messages
+            speech_messages.append(text)
+            print(speech_messages)
+            
             return jsonify({'text': text})
         except sr.UnknownValueError:
-            text = "Speech recognition could not understand the audio."
+            text = "your audio is not clear. Can you repeat the message"
             return jsonify({'text': text})
         except sr.RequestError as e:
             text = f"Could not request results from Google Web Speech API; {e}"

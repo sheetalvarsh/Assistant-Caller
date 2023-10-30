@@ -19,9 +19,6 @@ function textToSpeech() {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the recognized text in the textarea
-      document.getElementById('output-text').value = data.recognized_text;
-
       // Get the audio controls container
       var audioContainer = document.querySelector(".audio-container ul");
       audioContainer.innerHTML = "";
@@ -45,7 +42,39 @@ function textToSpeech() {
     });
 }
 
-//getting audio message for speech-to-text
+/** --------------- speech-to-text ---------------- */
+
+// Add an event listener to execute the updateUI function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+  updateUI();
+  location.reload();
+});
+
+// Update the recognized text in the HTML element
+function updateRecognizedText(text) {
+  const outputTextElement = document.getElementById('speech-output-text');
+  if (outputTextElement) {
+    outputTextElement.textContent = text; // Update text content
+  }
+}
+
+// Check if recognized text is available and update the UI
+function updateUI() {
+  const text = document.getElementById('speech-output-text');
+  if (text) {
+    const recognizedText = text.textContent;
+    const audioContainer = document.querySelector('.speech-output-container');
+    console.error(recognizedText);
+    if (recognizedText.trim() === '') {
+      audioContainer.style.display = 'none';
+    } else {
+      audioContainer.style.display = 'block';
+    }
+  }
+
+}
+
+// Getting audio message for speech-to-text
 const audioChunks = [];
 let mediaRecorder;
 
@@ -84,8 +113,6 @@ stopRecordingButton.addEventListener('click', () => {
 });
 
 function sendAudioData(audioBlob) {
-  console.error('inside send', audioBlob);
-
   const formData = new FormData();
   formData.append('audio', audioBlob);
 
@@ -95,14 +122,9 @@ function sendAudioData(audioBlob) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
-      // Update the recognized text in the HTML element
-      const outputTextElement = document.getElementById('output-text');
-      if (outputTextElement) {
-        outputTextElement.innerHTML = data.text;
-      }
-
+      updateRecognizedText(data.text); // Update recognized text
+      updateUI(); // Updating the UI based on recognized text
+      location.reload();
     })
     .catch((error) => {
       console.error('Error sending audio data to the server: ', error);
