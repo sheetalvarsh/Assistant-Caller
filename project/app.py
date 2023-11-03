@@ -4,10 +4,16 @@ import speech_recognition as sr
 from io import BytesIO
 import os
 from flask import Flask, render_template, request, jsonify, send_from_directory, session
+from flask_session import Session  # Import the Session extension
 from gtts import gTTS
+import logging
 
 app = Flask(__name__)
 app.secret_key = 'SDKFJSDFOWEIOF'
+
+# Configuring the app to use Flask-Session
+app.config['SESSION_TYPE'] = 'filesystem'  # used 'filesystem' session type for file storage
+Session(app)
 
 # Define the directory for audio files
 audio_directory = os.path.join(app.root_path, 'static', 'audio')
@@ -23,7 +29,8 @@ speech_messages = []
 
 @app.route('/')
 def index():
-    return render_template('index.html', audio_messages=audio_messages, speech_messages=speech_messages)
+    text = session.get('text', '')
+    return render_template('index.html', audio_messages=audio_messages, speech_messages=speech_messages, text=text)
 
 @app.route('/text-to-speech', methods=['POST'])
 def text_to_speech():
@@ -102,6 +109,12 @@ def upload_audio():
             return jsonify({'text': text})
     else:
         return jsonify({'text': 'No audio data received'})
+
+@app.route('/check_session')
+def check_session():
+    session['test_key'] = 'test_value'
+    app.logger.info(f'Session data: {session.get("test_key")}')
+    return f'Session data: {session.get("test_key")}'
 
 if __name__ == '__main__':
     app.run(debug=True)

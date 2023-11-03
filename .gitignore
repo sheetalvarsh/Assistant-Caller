@@ -28,3 +28,6 @@ project/templates/.DS_Store
 # speech-to-text input audio files
 *.wav
 project/.DS_Store
+flask_session/2029240f6d1128be89ddc32729463129
+flask_session/3934f1d2d18052f4db0dd1b05075c19f
+project/static/speech_audio/converted_audio.wav
