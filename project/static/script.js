@@ -1,4 +1,6 @@
 
+
+// constant values for error messages
 const ErrorMessages = {
   UNKNOWN_VALUE_ERROR: "Your voice is not clear, please repeat the message",
   REQUEST_ERROR: "Could not request results from Google Web Speech API; {}",
@@ -128,10 +130,8 @@ function sendAudioData(audioBlob) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.error('text - ', data)
       updateRecognizedText(data.text); // Update recognized text
       updateUI(); // Updating the UI based on recognized text
-      // location.reload();
     })
     .catch((error) => {
       console.error('Error sending audio data to the server: ', error);
@@ -143,7 +143,7 @@ function updateRecognizedText(text) {
   const outputTextElement = document.getElementById('display_error');
   if (outputTextElement) {
     if (text === ErrorMessages.UNKNOWN_VALUE_ERROR) {
-      // Display an error message
+      // Display error message if audio is not clear
       outputTextElement.classList.add('error');
     } else {
       outputTextElement.classList.remove('error');

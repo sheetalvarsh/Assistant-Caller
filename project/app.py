@@ -100,7 +100,6 @@ def upload_audio():
             speech_messages.append(text)
             return jsonify({'text': text})
         except sr.UnknownValueError:
-            # print(ErrorMessages.UNKNOWN_VALUE_ERROR.)
             text = ErrorMessages.UNKNOWN_VALUE_ERROR.value
             return jsonify({'text': text})
         except sr.RequestError as e:
