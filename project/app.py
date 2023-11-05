@@ -6,7 +6,8 @@ import os
 from flask import Flask, render_template, request, jsonify, send_from_directory, session
 from flask_session import Session  # Import the Session extension
 from gtts import gTTS
-import logging
+# import logging
+from error_messages import ErrorMessages
 
 app = Flask(__name__)
 app.secret_key = 'SDKFJSDFOWEIOF'
@@ -36,7 +37,6 @@ def index():
 def text_to_speech():
     try:
         message = request.form.get('message-input')
-        print('msg', message)
         if message:
             # Create a unique filename for each audio message
             output_filename = f'output_{len(audio_messages) + 1}.ogg'
@@ -98,17 +98,16 @@ def upload_audio():
             
             # Store the recognized speech in speech messages
             speech_messages.append(text)
-            print(speech_messages)
-            
             return jsonify({'text': text})
         except sr.UnknownValueError:
-            text = "your audio is not clear. Can you repeat the message"
+            # print(ErrorMessages.UNKNOWN_VALUE_ERROR.)
+            text = ErrorMessages.UNKNOWN_VALUE_ERROR.value
             return jsonify({'text': text})
         except sr.RequestError as e:
-            text = f"Could not request results from Google Web Speech API; {e}"
+            text = ErrorMessages.REQUEST_ERROR.value
             return jsonify({'text': text})
     else:
-        return jsonify({'text': 'No audio data received'})
+        return jsonify({'text': ErrorMessages.NO_AUDIO.value})
 
 @app.route('/check_session')
 def check_session():

@@ -25,11 +25,13 @@
         <div style="float: right; width: 45%;">
           {% for speech_message in speech_messages %}
           <div class="speech-text w-100">
-            <p id="speech-output-text">{{ speech_message }}</p>
+            <p id="speech-output-text">{{ speech_message.text }}</p>
           </div>
           {% endfor %}
         </div>
       </div>
+      <div id="display_error" style="display: none;"></div>
+   
     </div>
 
 

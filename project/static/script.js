@@ -1,4 +1,10 @@
 
+const ErrorMessages = {
+  UNKNOWN_VALUE_ERROR: "Your voice is not clear, please repeat the message",
+  REQUEST_ERROR: "Could not request results from Google Web Speech API; {}",
+  NO_AUDIO: "No audio data received",
+};
+
 function textToSpeech() {
   // Get the text input
   var messageInput = document.getElementById('message-input').value;
@@ -122,11 +128,26 @@ function sendAudioData(audioBlob) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.error('text - ', data)
       updateRecognizedText(data.text); // Update recognized text
       updateUI(); // Updating the UI based on recognized text
-      location.reload();
+      // location.reload();
     })
     .catch((error) => {
       console.error('Error sending audio data to the server: ', error);
     });
+}
+
+// Update the recognized text in the HTML element
+function updateRecognizedText(text) {
+  const outputTextElement = document.getElementById('display_error');
+  if (outputTextElement) {
+    if (text === ErrorMessages.UNKNOWN_VALUE_ERROR) {
+      // Display an error message
+      outputTextElement.classList.add('error');
+    } else {
+      outputTextElement.classList.remove('error');
+    }
+    outputTextElement.textContent = text; // Update text content
+  }
 }
