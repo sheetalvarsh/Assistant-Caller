@@ -51,36 +51,12 @@ function textToSpeech() {
 }
 
 /** --------------- speech-to-text ---------------- */
+isFirstLoad = true;
 
 // Add an event listener to execute the updateUI function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
   updateUI();
-  location.reload();
 });
-
-// Update the recognized text in the HTML element
-function updateRecognizedText(text) {
-  const outputTextElement = document.getElementById('speech-output-text');
-  if (outputTextElement) {
-    outputTextElement.textContent = text; // Update text content
-  }
-}
-
-// Check if recognized text is available and update the UI
-function updateUI() {
-  const text = document.getElementById('speech-output-text');
-  if (text) {
-    const recognizedText = text.textContent;
-    const audioContainer = document.querySelector('.speech-output-container');
-    console.error(recognizedText);
-    if (recognizedText.trim() === '') {
-      audioContainer.style.display = 'none';
-    } else {
-      audioContainer.style.display = 'block';
-    }
-  }
-
-}
 
 // Getting audio message for speech-to-text
 const audioChunks = [];
@@ -130,8 +106,10 @@ function sendAudioData(audioBlob) {
   })
     .then((response) => response.json())
     .then((data) => {
-      updateRecognizedText(data.text); // Update recognized text
+      console.error('upload - ', data);
+      updateRecognizedText(data); // Update recognized text
       updateUI(); // Updating the UI based on recognized text
+      // location.reload();
     })
     .catch((error) => {
       console.error('Error sending audio data to the server: ', error);
@@ -139,15 +117,38 @@ function sendAudioData(audioBlob) {
 }
 
 // Update the recognized text in the HTML element
-function updateRecognizedText(text) {
-  const outputTextElement = document.getElementById('display_error');
-  if (outputTextElement) {
-    if (text === ErrorMessages.UNKNOWN_VALUE_ERROR) {
-      // Display error message if audio is not clear
-      outputTextElement.classList.add('error');
-    } else {
-      outputTextElement.classList.remove('error');
+function updateRecognizedText(data) {
+  const outputTextElement = document.getElementById('speech-output-text');
+  const errorTextElement = document.getElementById('display-error');
+
+  if (outputTextElement !== null) {
+    outputTextElement.textContent = data.text;
+    // location.reload();
+
+    // Display error message if audio is not clear
+    if (errorTextElement !== null) {
+      if (data.error === ErrorMessages.UNKNOWN_VALUE_ERROR) {
+        errorTextElement.classList.add('error');
+        errorTextElement.textContent = data.error;
+      } else {
+        errorTextElement.classList.remove('error');
+      }
     }
-    outputTextElement.textContent = text; // Update text content
+  }
+}
+
+// Check if recognized text is available and update the UI
+function updateUI() {
+  const text = document.getElementById('speech-output-text');
+  if (text) {
+    const recognizedText = text.textContent;
+    console.error('recognized text -', text);
+    const audioContainer = document.querySelector('.speech-output-container');
+    if (recognizedText.trim() === '') {
+      audioContainer.style.display = 'none';
+    } else {
+      audioContainer.style.display = 'block';
+      location.reload();
+    }
   }
 }
