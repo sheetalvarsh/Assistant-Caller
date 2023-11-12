@@ -41,14 +41,14 @@
     <div class="message-container">
       <input type="text" class="message-input" id="message-input" placeholder="Type your message...">
 
-      <button class="send-button" type="button" onclick="textToSpeech()">
+      <button class="send-button" type="button" onclick="textToSpeech()" title="send">
         <i class="fa fa-paper-plane" aria-hidden="true"></i>
       </button>
       <div class="mic">
-        <button class="start-record" id="startRecording" type="button">
+        <button class="start-record" id="startRecording" type="button" title="record">
           <i class="fas fa-microphone-alt"></i>
         </button>
-        <button class="stop-record" id="stopRecording" type="button" disabled>
+        <button class="stop-record" id="stopRecording" type="button" title="stop" disabled>
           <i class="fa-regular fa-circle-stop"></i>
         </button>
       </div>

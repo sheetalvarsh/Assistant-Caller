@@ -7,12 +7,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 37rem;
 
   .fluid-container {
     height: 38rem;
-    background-color: #cde4ff;
+    background-color: #fbfbf1;
     position: relative;
     overflow-y: scroll;
+    max-height: 35rem;
 
     .history-container {
       padding: 8px;
@@ -30,7 +32,7 @@ body {
 
         .sender {
           align-self: flex-end;
-          background-color: #007bff;
+          background-color: #34344F;
           color: #fff;
         }
 
@@ -82,9 +84,10 @@ body {
 
 
         .start-record {
-          color: #1877d7 !important;
+          color: #575794 !important;
           border: none;
           background-color: white;
+          padding-right: 0;
         }
 
         .stop-record {
@@ -110,13 +113,13 @@ body {
 
     .send-button,
     .microphone-button {
-      background-color: #007bff;
+      background-color: #575794;
       color: #fff;
       border: none;
       border-radius: 50px;
-      padding: 11px 14px;
+      padding: 7px 10px;
       cursor: pointer;
-      margin-right: 10px;
+      margin-right: 5px;
 
       .fa {
         font-size: 20px;
