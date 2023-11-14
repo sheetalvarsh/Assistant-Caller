@@ -94,16 +94,21 @@ def upload_audio():
             # Store the recognized speech in speech messages
             speech_messages.append(text)
             session.setdefault('speech_messages', []).append(text)
+
             return jsonify({'text': text})
         except sr.UnknownValueError:
             # print(ErrorMessages.UNKNOWN_VALUE_ERROR.)
-            text = ErrorMessages.UNKNOWN_VALUE_ERROR.value
-            return jsonify({'error': text})
+            error = ErrorMessages.UNKNOWN_VALUE_ERROR.value
+            return jsonify({'error': error})
         except sr.RequestError as e:
-            text = ErrorMessages.REQUEST_ERROR.value
-            return jsonify({'error': text})
+            error = ErrorMessages.REQUEST_ERROR.value
+            return jsonify({'error': error})
     else:
         return jsonify({'text': ErrorMessages.NO_AUDIO.value})
+
+@app.route('/get_speech_messages')
+def get_speech_messages():
+    return jsonify(speech_messages)
 
 @app.route('/check_session')
 def check_session():
