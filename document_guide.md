@@ -36,48 +36,46 @@ Assuming the developer has already read the user's guide and has the project ins
 
 ### Code Flow
 
-- **Text-to-Speech**
+1. **Text-to-Speech**
 
-***app.py***: Flask application file containing server-side logic.
+    ***app.py***: Flask application file containing server-side logic.
 
-***Routes***:
-◦	“/”: Renders the main chat interface.
-◦	“/text-to-speech”: Handles text-to-speech functionality.
+    ***Routes***:
+        - “/”: Renders the main chat interface.
+        - “/text-to-speech”: Handles text-to-speech functionality.
 
-***Functions***:
-	text_to_speech: Converts text to speech and manages chat history.
+    ***Functions***:
+        text_to_speech: Converts text to speech and manages chat history.
 
-***HTML Templates*** (in the templates folder):
-index.html: Main chat interface.
-	- Displays a-udio messages and recognized text.
-    - Allows users to input text messages and interact with the chatbot.
+    ***HTML Templates*** (in the templates folder):
+    index.html: Main chat interface.
+        - Displays a-udio messages and recognized text.
+        - Allows users to input text messages and interact with the chatbot.
 
-***JavaScript*** (in script.js):
+    ***JavaScript*** (in script.js):
+        * textToSpeech Function:
+            - Sends a POST request for text-to-speech.
+            - Dynamically updates the HTML to display audio messages and recognized text.
 
-textToSpeech Function:
-    - Sends a POST request for text-to-speech.
-    - Dynamically updates the HTML to display audio messages and recognized text.
+2.  **Speech-to-Text**
 
-- **Speech-to-Text**
+    ***app.py***: Flask application file containing server-side logic.
 
-***app.py***: Flask application file containing server-side logic.
+    ***Routes***:
+        "/speech-to-text": Handles speech-to-text functionality.
 
-***Routes***:
-    "/speech-to-text": Handles speech-to-text functionality.
+    ***JavaScript*** (in script.js):
+    * startRecording Function:
+        - Activated when the user clicks the microphone button to start recording.
+        - Initiates audio recording using the Web Speech API.
 
-***JavaScript*** (in script.js):
+    * stopRecording Function:
+        - Activated when the user clicks the stop button to end recording.
+        - Sends the recorded audio data to the server for speech-to-text conversion.
 
-* startRecording Function:
-    - Activated when the user clicks the microphone button to start recording.
-    - Initiates audio recording using the Web Speech API.
-
-* stopRecording Function:
-    - Activated when the user clicks the stop button to end recording.
-    - Sends the recorded audio data to the server for speech-to-text conversion.
-
-* handleSpeechToTextResponse Function:
-    - Handles the server's response after speech-to-text conversion.
-    - Updates the HTML to display the recognized text alongside the audio message.
+    * handleSpeechToTextResponse Function:
+        - Handles the server's response after speech-to-text conversion.
+        - Updates the HTML to display the recognized text alongside the audio message.
 
 **Event Listeners** :
     - Start Recording Button: Calls startRecording Function.
