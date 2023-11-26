@@ -47,8 +47,8 @@ body {
         background: #00aabb;
         border-radius: .4em;
         margin: 4px;
-        max-width: 12rem;
-        margin-left: -3.3rem;
+        max-width: 20rem;
+        margin-left: -8.3rem;
 
         p {
           margin-top: 11px !important;
@@ -58,16 +58,15 @@ body {
       .text_bubble::after {
         content: '';
         position: absolute;
-        left: 0px;
-        top: 50%;
+        left: 6px;
+        top: 40%;
         width: 0;
         height: 0;
-        border: 28px solid transparent;
+        border: 18px solid transparent;
         border-right-color: #00aabb;
         border-left: 0;
-        border-bottom: 0;
-        margin-top: -18.5px;
-        margin-left: -23px;
+        margin-top: -14.5px;
+        margin-left: -20px;
       }
 
       .speech-output-container {

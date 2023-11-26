@@ -77,7 +77,7 @@ const startRecordingButton = document.getElementById('startRecording');
 const stopRecordingButton = document.getElementById('stopRecording');
 
 // Hide stop redording button initially
-stopRecordingButton.style.display = 'none'; 
+stopRecordingButton.style.display = 'none';
 
 startRecordingButton.addEventListener('click', () => {
 
@@ -138,52 +138,19 @@ function updateRecognizedText(data) {
   const errorTextElement = document.getElementById('display-error');
 
   if (outputTextElement !== null) {
-    outputTextElement.textContent = data.text;
-    // Display error message if audio is not clear
-    if (errorTextElement !== null) {
-      if (data.error === ErrorMessages.UNKNOWN_VALUE_ERROR) {
-        errorTextElement.classList.add('error');
-        errorTextElement.textContent = data.error;
-        // location.reload();
-      } else {
-        errorTextElement.classList.remove('error');
-        location.reload();
-      }
+    if (data.error === ErrorMessages.UNKNOWN_VALUE_ERROR) {
+      errorTextElement.classList.add('error'); // Display error message if audio is not clear
+      errorTextElement.textContent = data.error;
+    } else {
+      outputTextElement.textContent = data.text;
+      errorTextElement.classList.remove('error');
     }
   }
+
 }
 
-// function updateUI() {
-//   const text = document.getElementById('speech-output-text');
-//   if (text) {
-//     const recognizedText = text.textContent;
-//     console.error('recognized text -', text);
-//     const audioContainer = document.querySelector('.speech-output-container');
-//     if (recognizedText.trim() === '') {
-//       audioContainer.style.display = 'none';
-//     } else {
-//       audioContainer.style.display = 'block';
-//       location.reload();
-//     }
-//   }
-// }
-
-// Check if recognized text is available and update the UI
 async function updateUI() {
   await fetchSpeechMessages();
-  // const text = document.getElementById('speech-output-text');
-  // if (text) {
-  //   const recognizedText = text.textContent;
-  //   const audioContainer = document.querySelector('.speech-output-container');
-  //   const errorElement = document.getElementById('display-error');
-  //   // Hide audio container if recognized text is empty and there is no error message
-  //   audioContainer.style.display = (recognizedText.trim() === '' && errorElement === null) ? 'none' : 'block';
-  // }
-  console.error(speech_messages_list);
   const audioContainer = document.querySelector('.speech-output-container');
-  if (speech_messages_list.length === 0) {
-    audioContainer.style.display = 'none';
-  } else {
-    audioContainer.style.display = 'block';
-  }
+  audioContainer.style.display = speech_messages_list.length === 0 ? 'none' : 'block';
 }
