@@ -22,8 +22,7 @@ This project is a multimodal chatbot that allows users to interact using both te
 
 To run the project locally, follow these steps:
 1.	Clone the repository:
-   ```bash
-   git clone https://github.com/sheetalvarsh/VoiceBot_HCI584.git
+   ``` git clone https://github.com/sheetalvarsh/VoiceBot_HCI584.git ```
 
 2.	Change into the project directory:
 
