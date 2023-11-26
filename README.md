@@ -3,8 +3,7 @@ Project Specification:
 # Multi-Modal Chatbot Application: Voice-Bot
 
 ## Overview
-This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly.
-This project is a multimodal chatbot that allows users to interact using both text-to-speech and speech-to-text functionalities. The chatbot is built using Python and Flask for the backend, and HTML, CSS, and JavaScript for the frontend.
+This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly. The chatbot is built using Python and Flask for the backend, and HTML, CSS, and JavaScript for the frontend.
 
 ## Features
 
@@ -35,13 +34,13 @@ To run the project locally, follow these steps:
 
     ``` pip install -r requirements.txt ```
 
-
 ##  Usage
 
 *	Start the Flask application:
     ``` python app.py ```
-    
+
 *	Open your web browser and go to http://127.0.0.1:5000.
+
 *	Interact with the chatbot by entering text messages or using the microphone button for speech input.
 
 ## Project Structure

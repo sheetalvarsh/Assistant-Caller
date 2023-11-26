@@ -76,7 +76,11 @@ let mediaRecorder;
 const startRecordingButton = document.getElementById('startRecording');
 const stopRecordingButton = document.getElementById('stopRecording');
 
+// Hide stop redording button initially
+stopRecordingButton.style.display = 'none'; 
+
 startRecordingButton.addEventListener('click', () => {
+
   navigator.mediaDevices.getUserMedia({ audio: true })
     .then((stream) => {
       mediaRecorder = new MediaRecorder(stream);
@@ -93,7 +97,10 @@ startRecordingButton.addEventListener('click', () => {
       };
 
       mediaRecorder.start();
-      startRecordingButton.disabled = true;
+
+      // Toggling audio recording buttons
+      startRecordingButton.style.display = 'none';
+      stopRecordingButton.style.display = 'inline-block';
       stopRecordingButton.disabled = false;
     })
     .catch((error) => {
@@ -103,8 +110,8 @@ startRecordingButton.addEventListener('click', () => {
 
 stopRecordingButton.addEventListener('click', () => {
   mediaRecorder.stop();
-  startRecordingButton.disabled = false;
-  stopRecordingButton.disabled = true;
+  startRecordingButton.style.display = 'inline-block';
+  stopRecordingButton.style.display = 'none';
 });
 
 function sendAudioData(audioBlob) {
@@ -137,6 +144,7 @@ function updateRecognizedText(data) {
       if (data.error === ErrorMessages.UNKNOWN_VALUE_ERROR) {
         errorTextElement.classList.add('error');
         errorTextElement.textContent = data.error;
+        // location.reload();
       } else {
         errorTextElement.classList.remove('error');
         location.reload();
@@ -172,9 +180,10 @@ async function updateUI() {
   //   audioContainer.style.display = (recognizedText.trim() === '' && errorElement === null) ? 'none' : 'block';
   // }
   console.error(speech_messages_list);
+  const audioContainer = document.querySelector('.speech-output-container');
   if (speech_messages_list.length === 0) {
-    const audioContainer = document.querySelector('.speech-output-container');
     audioContainer.style.display = 'none';
-
+  } else {
+    audioContainer.style.display = 'block';
   }
 }
