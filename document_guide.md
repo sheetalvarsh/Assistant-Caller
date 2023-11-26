@@ -7,9 +7,9 @@ This developer's documentation provides insights into the implementation details
 ## Implementation Status
 
 The current implementation includes the following features:
-    * Text-to-Speech: Convert text messages to speech/audio messages.
-    * Speech-to-Text: Convert audio messages to text.
-    * Chat History: Display chat history with audio and text messages.
+* Text-to-Speech: Convert text messages to speech/audio messages.
+* Speech-to-Text: Convert audio messages to text.
+* Chat History: Display chat history with audio and text messages.
 
 ## Install/Deployment
 
@@ -41,21 +41,21 @@ Assuming the developer has already read the user's guide and has the project ins
     ***app.py***: Flask application file containing server-side logic.
 
     ***Routes***:
-        - “/”: Renders the main chat interface.
-        - “/text-to-speech”: Handles text-to-speech functionality.
+    - “/”: Renders the main chat interface.
+    - “/text-to-speech”: Handles text-to-speech functionality.
 
     ***Functions***:
         text_to_speech: Converts text to speech and manages chat history.
 
     ***HTML Templates*** (in the templates folder):
     index.html: Main chat interface.
-        - Displays a-udio messages and recognized text.
-        - Allows users to input text messages and interact with the chatbot.
+    - Displays a-udio messages and recognized text.
+    - Allows users to input text messages and interact with the chatbot.
 
     ***JavaScript*** (in script.js):
-        * textToSpeech Function:
-            - Sends a POST request for text-to-speech.
-            - Dynamically updates the HTML to display audio messages and recognized text.
+    * textToSpeech Function:
+        - Sends a POST request for text-to-speech.
+        - Dynamically updates the HTML to display audio messages and recognized text.
 
 2.  **Speech-to-Text**
 
@@ -78,34 +78,35 @@ Assuming the developer has already read the user's guide and has the project ins
         - Updates the HTML to display the recognized text alongside the audio message.
 
 **Event Listeners** :
-    - Start Recording Button: Calls startRecording Function.
-    - Stop Recording Button: Calls stopRecording Function.
+- Start Recording Button: Calls startRecording Function.
+- Stop Recording Button: Calls stopRecording Function.
 
 **Server-Side Processing** (Within /speech-to-text Route in app.py):
-    - Receives the recorded audio data.
-    - Calls the speech_to_text Function from speech_recognition.py.
-    - Returns the recognized text to the client.
+- Receives the recorded audio data.
+- Calls the speech_to_text Function from speech_recognition.py.
+- Returns the recognized text to the client.
 
 ## Known Issues
 
 ### Minor Issues
-    * Few style issues in text-to-speech messages.
-    * Need to work on Stacking of converted messages.
+* Few style issues in text-to-speech messages.
+* Need to work on Stacking of converted messages.
 
 ### Major Issues
-    * The application may not work well with noisy audio input.
-    * Storing of messages 
+* The application may not work well with noisy audio input.
+* Storing of messages 
 
 ### Future Work
-    * Implement a more robust speech recognition mechanism.
-    * Enhance the user interface with additional features.
-    * Explore options for real-time communication.
+* Implement a more robust speech recognition mechanism.
+* Enhance the user interface with additional features.
+* Explore options for real-time communication.
 
 ## Ongoing Deployment/Development
-    * Unit Tests: Include unit tests to ensure the reliability of core functionalities.
-    * Documentation Updates: Keep the documentation up-to-date with any changes.
-    * Code Refactoring: Regularly refactor the code for better maintainability.
-    * Compatibility Testing: Test the application with various browsers and environments.
+* Unit Tests: Include unit tests to ensure the reliability of core functionalities.
+* Documentation Updates: Keep the documentation up-to-date with any changes.
+* Code Refactoring: Regularly refactor the code for better maintainability.
+* Compatibility Testing: Test the application with various browsers and environments.
 
-**Note**: This documentation serves as a guide for developers taking over the project, providing insights into the current state, potential improvements, and considerations for ongoing deployment and development.
+## Note:-
+ This documentation serves as a guide for developers taking over the project, providing insights into the current state, potential improvements, and considerations for ongoing deployment and development.
 
