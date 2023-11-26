@@ -10,11 +10,18 @@
         endif %}>
         <ul style="list-style-type: none;">
           {% for user_audio in audio_messages %}
-          <li>
-            <audio controls>
-              <source src="{{ url_for('get_audio', filename=user_audio) }}" type="audio/ogg">
-              Your browser does not support the audio tag.
-            </audio>
+          <li class="row">
+            <div class="col-6">
+              <audio controls>
+                <source src="{{ url_for('get_audio', filename=user_audio) }}" type="audio/ogg">
+                Your browser does not support the audio tag.
+              </audio>
+            </div> 
+            <div class="col-6 text_bubble">
+              {% if loop.index0 < input_messages|length %} 
+                <p>{{ input_messages[loop.index0] }}</p>
+              {% endif %}
+            </div>
           </li>
           {% endfor %}
         </ul>
@@ -31,7 +38,7 @@
         </div>
       </div>
       <div id="display-error" style="display: none;"></div>
-   
+
     </div>
 
 

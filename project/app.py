@@ -26,11 +26,12 @@ if not os.path.exists(speech_audio_directory):
 
 audio_messages = []
 speech_messages = []
+input_messages = []
 
 @app.route('/')
 def index():
     text = session.get('text', '')
-    return render_template('index.html', audio_messages=audio_messages, speech_messages=speech_messages)
+    return render_template('index.html', audio_messages=audio_messages, input_messages = input_messages, speech_messages=speech_messages)
 
 @app.route('/text-to-speech', methods=['POST'])
 def text_to_speech():
@@ -45,8 +46,12 @@ def text_to_speech():
             tts.save(output_audio_path)
             # Add the new audio message to the audio_messages list
             audio_messages.append(output_filename)
+            input_messages.append(message)
+
+            print(input_messages)
             # Limit the list to store only the last 5 audio messages
-            if len(audio_messages) > 5:
+            if len(audio_messages) > 10:
+                # input_messages.pop(0)
                 old_audio_filename = audio_messages.pop(0)
                 old_audio_path = os.path.join(
                     audio_directory, old_audio_filename)
