@@ -25,14 +25,14 @@ Assuming the developer has already read the user's guide and has the project ins
 ### User Interaction Flow
 
 1.	Text-to-Speech:
-*   User enters a text message and clicks the "send" button.
-*	The message is converted to speech using gTTS.
-*	The audio message is displayed with playback controls.
+    * User enters a text message and clicks the "send" button.
+    * The message is converted to speech using gTTS.
+    * The audio message is displayed with playback controls.
 
 2.	Speech-to-Text:
-*	User clicks the microphone button to start recording.
-*	The recorded audio is sent to the server for recognition.
-*	The recognized text is displayed alongside the audio message.
+    * User clicks the microphone button to start recording.
+    * The recorded audio is sent to the server for recognition.
+    * The recognized text is displayed alongside the audio message.
 
 ### Code Flow
 
@@ -48,9 +48,9 @@ Assuming the developer has already read the user's guide and has the project ins
         text_to_speech: Converts text to speech and manages chat history.
 
     ***HTML Templates*** (in the templates folder):
-    index.html: Main chat interface.
-    - Displays a-udio messages and recognized text.
-    - Allows users to input text messages and interact with the chatbot.
+    * index.html: Main chat interface.
+        - Displays a-udio messages and recognized text.
+        - Allows users to input text messages and interact with the chatbot.
 
     ***JavaScript*** (in script.js):
     * textToSpeech Function:
@@ -62,7 +62,7 @@ Assuming the developer has already read the user's guide and has the project ins
     ***app.py***: Flask application file containing server-side logic.
 
     ***Routes***:
-        "/speech-to-text": Handles speech-to-text functionality.
+       -  "/speech-to-text": Handles speech-to-text functionality.
 
     ***JavaScript*** (in script.js):
     * startRecording Function:

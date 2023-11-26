@@ -62,5 +62,5 @@ Sheetal Varshney
 
 ## Developer’s Documentation
 
-For more technical details, API documentation, and advanced configurations, please refer to the Developer's Documentation.
+For more technical details, API documentation, and advanced configurations, please refer to the [Developer's Documentation](document_guide.md)
 
