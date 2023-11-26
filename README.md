@@ -2,92 +2,67 @@
 Project Specification: 
 # Multi-Modal Chatbot Application: Voice-Bot
 
-Overview
+## Overview
+This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly.
+This project is a multimodal chatbot that allows users to interact using both text-to-speech and speech-to-text functionalities. The chatbot is built using Python and Flask for the backend, and HTML, CSS, and JavaScript for the frontend.
 
-This project aims to develop a multi-modal chatbot application that enables users to engage in conversations with the chatbot using both speech and text-based inputs. The chatbot will utilize speech recognition to convert user speech into text and employ text-to-speech technology to respond to users audibly. 
+## Features
+- **Text-to-Speech:** Convert text messages to speech/audio messages.
+- **Speech-to-Text:** Convert audio messages to text.
+- **Chat History:** Display chat history with audio and text messages.
 
-Problem Space
+## Technologies Used
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
 
-This project aims to solve the issue of managing calls while engaged in other activities. It helps individuals avoid distractions and ensures a safer interaction with callers when answering isn't feasible.
+## Installation
 
-Version 1: Text-to-Speech Conversions and message storage
+To run the project locally, follow these steps:
+1.	Clone the repository:
+   ```bash
+   git clone https://github.com/sheetalvarsh/VoiceBot_HCI584.git
 
-This initial version of the application will be designed as a web-based platform. Users can provide input in speech, which will be converted into text. Subsequently, this text will be transformed back into speech, allowing users to audibly hear the chatbot's responses. This version focuses on creating a web interface for seamless speech-to-text and text-to-speech interactions, enhancing user engagement and accessibility.
+2.	Change into the project directory:
 
-Features
+    ``` cd VoiceBot_HCI584 ```
 
-•	Web-based Application: Develop a web-based interface for user interaction.
-•	Speech Recognition: Implement speech-to-text technology to convert user speech inputs into text.
-•	Text-to-Speech Conversion: Utilize text-to-speech technology to transform chatbot responses into audible speech for users.
+3.	Install the required packages
 
-Purpose
-
-•	Enhance User Accessibility: Provide a user-friendly platform for speech-based interactions.
-•	Improve User Experience: Ensure clear and comprehensible communication by converting text responses into text and speech.
-
--------------------------------------------------------------------------------------
-Task Vignettes (User activity "flow")
-Task 1: User Input
-
-Description: The user initiates a conversation by sending a message to the app.
-Steps:
-1.	User opens the chat interface within the app.
-2.	User speaks or types a message to communicate with the chatbot.
-3.	User clicks on a "Send" button to submit the message.
-
-Task 2: Speech-to-Text Conversion
-
-Description: The app employs speech-to-text technology to convert the spoken message into text for processing.
-Steps:
-1.	The app receives the user's spoken message.
-2.	The app utilizes speech recognition to convert the spoken message into text.
-3.	The converted text message is displayed on the screen.
-
-Task 3: Text Response
-
-Description: The app displays the converted text message, allowing the user to respond via text.
-Steps:
-1.	The user views the converted text message displayed on the app's interface.
-2.	The user formulates a response by typing a text message.
-3.	The user clicks on a "Send" button to submit the text response.
-
-Task 4: Text-to-Speech Conversion
-
-Description: The user-generated text response is transformed back into speech using text-to-speech technology.
-Steps:
-1.	The app receives the user's text response.
-2.	The app utilizes text-to-speech technology to convert the text response into audible speech.
-3.	The synthesized speech response is prepared for playback.
-
--------------------------------------------------------------------------------------
-Technical Flow
-
-1.	Develop a web-based interface using HTML, CSS, and JavaScript to interact with users.
-2.	Implement a speech recognition module (e.g., using libraries or APIs) to capture user speech inputs.
-3.	Utilize speech recognition technology to convert captured speech into text format.
-4.	Process the text input and forward it to the chatbot module for further handling.
-5.	Users can convert messages via this platform in both speech and text inputs.
-
--------------------------------------------------------------------------------------
-Technologies and Tools
-
-•	Speech Recognition: Utilize speech recognition libraries or APIs (such as Whisper).
-•	Text-to-Speech: Integrate text-to-speech engines for speech synthesis.
-•	Web Development: Create a user-friendly web interface using HTML, CSS, and JavaScript.
-•	Version Control: Use Git for project management and version control.
-
--------------------------------------------------------------------------------------
-Version 2: Speech-to-Text conversions and message storage
-
-In this next phase of development, I will be introducing a new feature of speech-to-text to further enhance the capabilities of this application:
-
-•	Speech-to-Text Conversion: I will implement a feature that enables users to convert spoken language into text. This means that users can simply speak into their microphone, and the chatbot will instantly transcribe their words into text for processing.
-•	Live Microphone Input: With this feature, users will be able to engage with the chatbot in real time by using a live microphone input. It will provide a convenient and hands-free way to interact with the chatbot.
-•	Message Logging in CSV Format: I will also implement a system to store all chatbot interactions, including both text-to-speech and speech-to-text messages, in a CSV file. This will allow users to keep a record of their conversation history and review past interactions with the chatbot.
-
-These enhancements are aimed at making the chatbot application more versatile and comprehensive, ultimately providing a more engaging and user-friendly experience.
+    ``` pip install -r requirements.txt ```
 
 
+##  Usage
 
+•	Start the Flask application:
+    ``` python app.py ```
+    
+•	Open your web browser and go to http://localhost:5000.
+•	Interact with the chatbot by entering text messages or using the microphone button for speech input.
 
+## Project Structure
+•	app.py: Flask application file containing server-side logic.
+•	static: Directory for static files (CSS, JavaScript, audio files).
+•	templates: HTML templates for rendering web pages.
+•	requirements.txt: List of Python packages required for the project.
+
+## Contributors
+Sheetal Varshney
+
+## Issues and Limitations
+[List any known issues or limitations]
+
+## Troubleshooting
+•	If you encounter any issues, please check the error messages displayed in the web interface.
+•	Ensure that your microphone is properly connected and configured if you are using the voice recording feature.
+
+## Known Limitations
+•	Currently, the chat history is limited to the last 5 audio messages.
+•	Speech recognition may not be accurate in noisy environments.
+
+## Developer’s Documentation
+
+For more technical details, API documentation, and advanced configurations, please refer to the Developer's Documentation.
 
