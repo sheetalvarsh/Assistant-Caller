@@ -34,6 +34,10 @@ Assuming the developer has already read the user's guide and has the project ins
     * The recorded audio is sent to the server for recognition.
     * The recognized text is displayed alongside the audio message.
 
+### Folder Structure 
+
+![Alt text](image.png)
+
 ### Code Flow
 
 1. **Text-to-Speech**
