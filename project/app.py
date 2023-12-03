@@ -30,32 +30,40 @@ input_messages = []
 
 @app.route('/')
 def index():
+    """
+    Renders the index page with audio, input, and speech messages.
+
+    Returns:
+        str: HTML content for the index page.
+    """
     text = session.get('text', '')
-    return render_template('index.html', audio_messages=audio_messages, input_messages = input_messages, speech_messages=speech_messages)
+    return render_template('index.html', audio_messages=audio_messages, input_messages=input_messages, speech_messages=speech_messages)
 
 @app.route('/text-to-speech', methods=['POST'])
 def text_to_speech():
+    """
+    Converts text to speech and returns the audio file.
+
+    Returns:
+        dict: JSON response with recognized text and audio file information.
+    """
     try:
         message = request.form.get('message-input')
         if message:
-            # Create a unique filename for each audio message
             output_filename = f'output_{len(audio_messages) + 1}.ogg'
             output_audio_path = os.path.join(audio_directory, output_filename)
-            # Convert the message to speech using gTTS
             tts = gTTS(message, lang='en')
             tts.save(output_audio_path)
-            # Add the new audio message to the audio_messages list
             audio_messages.append(output_filename)
             input_messages.append(message)
 
-            print(input_messages)
             # Limit the list to store only the last 5 audio messages
             if len(audio_messages) > 10:
-                # input_messages.pop(0)
                 old_audio_filename = audio_messages.pop(0)
                 old_audio_path = os.path.join(
                     audio_directory, old_audio_filename)
-                os.remove(old_audio_path)  # Remove the oldest message
+                os.remove(old_audio_path)  
+
             return jsonify({'recognized_text': message, 'user_audio': output_filename})
         else:
             return jsonify({'error': 'No text to speak'})
@@ -64,39 +72,51 @@ def text_to_speech():
 
 @app.route('/get-audio/<filename>')
 def get_audio(filename):
+    """
+    Returns the specified audio file.
+
+    Args:
+        filename (str): Name of the audio file.
+
+    Returns:
+        str: Path to the requested audio file.
+    """
     return send_from_directory(audio_directory, filename)
 
 @app.route('/get-audio-messages', methods=['GET'])
 def get_audio_messages():
+    """
+    Returns a JSON response with the list of audio messages.
+
+    Returns:
+        dict: JSON response with audio messages.
+    """
     return jsonify({'audio_messages': audio_messages})
 
 @app.route('/upload_audio', methods=['POST'])
 def upload_audio():
+    """
+    Handles the uploaded audio file, performs speech recognition, and returns the recognized text.
+
+    Returns:
+        dict: JSON response with recognized text or error message.
+    """
     audio_data = request.files['audio']
 
     if audio_data:
         try:
-            # Convert the uploaded audio data to an AudioSegment
             audio = AudioSegment.from_file(BytesIO(audio_data.read()))
+            audio = audio.set_channels(1)
+            audio = audio.set_frame_rate(16000)
+            audio = audio.set_sample_width(2)
+            audio.export(f'{speech_audio_directory}/converted_audio.wav', format='wav')
 
-            # Convert to WAV format
-            audio = audio.set_channels(1)  # Set to mono if needed
-            audio = audio.set_frame_rate(16000)  # Set the desired sample rate
-            audio = audio.set_sample_width(2)  # Set the desired sample width
-
-            # Save the converted audio to disk
-            audio.export(
-                f'{speech_audio_directory}/converted_audio.wav', format='wav')
-            # Perform speech recognition on the audio using Recognizer
             r = sr.Recognizer()
             with sr.AudioFile(f'{speech_audio_directory}/converted_audio.wav') as source:
                 audio_data = r.record(source)
                 text = r.recognize_google(audio_data)
 
-            # Store the recognized text in session storage
             session['text'] = text
-
-            # Store the recognized speech in speech messages
             speech_messages.append(text)
             session.setdefault('speech_messages', []).append(text)
 
@@ -112,16 +132,31 @@ def upload_audio():
 
 @app.route('/get_speech_messages')
 def get_speech_messages():
+    """
+    Returns a JSON response with the list of speech messages.
+
+    Returns:
+        dict: JSON response with speech messages.
+    """
     return jsonify(speech_messages)
 
 @app.route('/check_session')
 def check_session():
+    """
+    Checks the session data.
+
+    Returns:
+        str: Session data information.
+    """
     session['test_key'] = 'test_value'
     app.logger.info(f'Session data: {session.get("test_key")}')
     return f'Session data: {session.get("test_key")}'
 
 @app.route('/get_session_messages')
 def get_session_messages():
+    """
+    Returns a JSON response
+    """
     messages = session.get('speech_messages', [])
     return jsonify({'speech_messages': messages})
 
