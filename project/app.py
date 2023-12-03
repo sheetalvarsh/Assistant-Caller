@@ -102,7 +102,6 @@ def upload_audio():
 
             return jsonify({'text': text})
         except sr.UnknownValueError:
-            # print(ErrorMessages.UNKNOWN_VALUE_ERROR.)
             error = ErrorMessages.UNKNOWN_VALUE_ERROR.value
             return jsonify({'error': error})
         except sr.RequestError as e:

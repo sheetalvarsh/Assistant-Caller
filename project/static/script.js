@@ -7,6 +7,14 @@ const ErrorMessages = {
   NO_AUDIO: "No audio data received",
 };
 
+//handles input when enter key is pressed
+function submitOnEnter(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // to prevent the default behavior 
+    textToSpeech(); // Calling the textToSpeech function when Enter is pressed
+  }
+}
+
 function textToSpeech() {
   // Get the text input
   var messageInput = document.getElementById('message-input').value;
@@ -54,16 +62,13 @@ function textToSpeech() {
 // Add an event listener to execute the updateUI function when the DOM is fully loaded
 let speech_messages_list = [];
 
-document.addEventListener('DOMContentLoaded', function () {
-  fetchSpeechMessages();
-  updateUI();
-});
-
 async function fetchSpeechMessages() {
   try {
     const response = await fetch('/get_speech_messages');
     const data = await response.json();
     speech_messages_list = data;
+    updateUI();
+    if(data.length <= 1) location.reload();
   } catch (error) {
     console.error('Error fetching speech messages:', error);
   }
@@ -144,9 +149,9 @@ function updateRecognizedText(data) {
     } else {
       outputTextElement.textContent = data.text;
       errorTextElement.classList.remove('error');
+      location.reload();
     }
   }
-
 }
 
 async function updateUI() {
