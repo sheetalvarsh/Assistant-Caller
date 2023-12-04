@@ -24,8 +24,6 @@ The project follows a typical Flask application structure. Here's a brief overvi
 ## Installation
 To set up the development environment, follow these steps:
 
-Clone or download the project repository.
-
 ## Installation
 
 1. Clone or download the project repository to your local machine
@@ -96,4 +94,4 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT License].
+This project is licensed under the [MIT License] (../LICENSE.md).
