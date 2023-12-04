@@ -1,6 +1,6 @@
 # Developer's Documentation
 
-Welcome to the developer's documentation for the Speech-to-Text and Text-to-Speech application. This guide provides technical details about the application, including setup instructions for developers and API documentation.
+Welcome to the developer's documentation for the *Speech-to-Text* and *Text-to-Speech* application. This guide provides technical details about the application, including setup instructions for developers and API documentation.
 
 ## Table of Contents
 
@@ -91,5 +91,4 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT_License] (LICENSE).
-
+This project is licensed under the [MIT_License] (../License)
