@@ -97,4 +97,4 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT License] (../LICENSE.md).
+This project is licensed under the [MIT License] (LICENSE.md).
