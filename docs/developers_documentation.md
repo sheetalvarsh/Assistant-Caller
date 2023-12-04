@@ -24,8 +24,6 @@ The project follows a typical Flask application structure. Here's a brief overvi
 ## Installation
 To set up the development environment, follow these steps:
 
-## Installation
-
 1. Clone or download the project repository to your local machine
 
     `git clone https://github.com/sheetalvarsh/VoiceBot_HCI584`
@@ -42,12 +40,12 @@ To set up the development environment, follow these steps:
 ## Dependencies
 The application relies on the following Python libraries:
 
-* Flask: Web framework for building the application.
-* pydub: Audio processing library.
-* SpeechRecognition: Speech recognition library.
-* gTTS: Google Text-to-Speech library.
+* **Flask**: Web framework for building the application.
+* **pydub**: Audio processing library.
+* **SpeechRecognition**: Speech recognition library.
+* **gTTS**: Google Text-to-Speech library.
 
-These dependencies are listed in the requirements.txt file.
+These dependencies are listed in the `requirements.txt` file.
 
 ## Configuration
 The application uses Flask-Session for session management. The session type is set to 'filesystem' for file storage. Configuration details can be found in `app.py`.
@@ -84,7 +82,6 @@ Request
     - `audio: The audio file to be transcribed.`
 
 Response
-
 * Success:
     - Status Code: `200`
     - JSON: `{ 'text': <transcribed_text> }`
@@ -94,5 +91,5 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT_License] (../LICENSE.md).
+This project is licensed under the [MIT_License] (LICENSE.md).
 
