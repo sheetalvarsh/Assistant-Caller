@@ -63,3 +63,5 @@ Sheetal Varshney
 ## Developer’s Documentation
 For more technical details, API documentation, and advanced configurations, please refer to the [Developer's Documentation](./docs/developers_documentation.md)
 
+## License
+This project is licensed under [MIT LICENSE](./LICENSE)
