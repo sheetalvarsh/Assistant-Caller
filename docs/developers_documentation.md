@@ -11,8 +11,7 @@ Welcome to the developer's documentation for the Speech-to-Text and Text-to-Spee
 5. API Documentation
 6. Text-to-Speech API
 7. Speech-to-Text API
-8. Contributing
-9. License
+8. License
 
 ## Project Structure
 The project follows a typical Flask application structure. Here's a brief overview of the key directories and files:
@@ -97,4 +96,4 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT License] (LICENSE.md).
+This project is licensed under the [MIT License].
