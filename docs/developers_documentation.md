@@ -16,10 +16,10 @@ Welcome to the developer's documentation for the Speech-to-Text and Text-to-Spee
 ## Project Structure
 The project follows a typical Flask application structure. Here's a brief overview of the key directories and files:
 
-* app.py: Main application file.
-* static/: Static assets, including audio files.
-* templates/: HTML templates for rendering web pages.
-* requirements.txt: List of Python dependencies.
+* **app.py**: Main application file.
+* **static/**: Static assets, including audio files.
+* **templates/**: HTML templates for rendering web pages.
+* **requirements.txt**: List of Python dependencies.
 
 ## Installation
 To set up the development environment, follow these steps:
@@ -91,5 +91,5 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT_License] (LICENSE.md).
+This project is licensed under the [MIT_License] (LICENSE).
 
