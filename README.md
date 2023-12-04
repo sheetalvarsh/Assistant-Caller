@@ -61,6 +61,5 @@ Sheetal Varshney
 *	Speech recognition may not be accurate in noisy environments.
 
 ## Developer’s Documentation
-
-For more technical details, API documentation, and advanced configurations, please refer to the [Developer's Documentation](document_guide.md)
+For more technical details, API documentation, and advanced configurations, please refer to the [Developer's Documentation](./docs/developers_documentation.md)
 

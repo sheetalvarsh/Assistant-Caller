@@ -84,4 +84,4 @@ If you encounter any issues while using the application, here are some common so
     - Check for background noise that may interfere with speech recognition.
 
 ## Appendix: Developer's Documentation
-    For more technical details about the application, including setup instructions for developers and API documentation, refer to the [Developer's Documentation](developers_guide.md)
+    For more technical details about the application, including setup instructions for developers and API documentation, refer to the [Developer's Documentation](./developers_documentation.md)
