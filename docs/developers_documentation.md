@@ -28,16 +28,16 @@ To set up the development environment, follow these steps:
 
 1. Clone or download the project repository to your local machine
 
-    ``` git clone https://github.com/sheetalvarsh/VoiceBot_HCI584 ```
+    `git clone https://github.com/sheetalvarsh/VoiceBot_HCI584`
     Navigate to the project directory.
 
 2. Navigate to the project directory.
 
-    ```cd VoiceBot_HCI584```
+    `cd VoiceBot_HCI584`
 
 3. Install the required Python packages
 
-    ```pip install -r requirements.txt```
+    `pip install -r requirements.txt`
 
 ## Dependencies
 The application relies on the following Python libraries:
@@ -94,4 +94,5 @@ Response
     - JSON: `{ 'error': <error_message> }`
 
 ## License
-This project is licensed under the [MIT License] (../LICENSE.md).
+This project is licensed under the [MIT_License] (../LICENSE.md).
+
