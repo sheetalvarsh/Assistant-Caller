@@ -21,7 +21,7 @@ The project follows a typical Flask application structure. Here's a brief overvi
 * **templates/**: HTML templates for rendering web pages.
 * **requirements.txt**: List of Python dependencies.
 
-![Alt text](<./document_images/project_structure.png>)
+![Alt text](<./images/project_structure.png>)
 
 ## Installation
 To set up the development environment, follow these steps:
@@ -116,7 +116,7 @@ Response
     - When converting text to speech, the **gTTS (Google Text-to-Speech)** library is utilized. The generated audio file is then saved in the corresponding session folder.
 
 4. Speech-to-Text (STT):
-    - For transcribing speech to text, the application uses the **SpeechRecognition** library. The uploaded audio file is processed, and the transcribed text is extracted.
+    - For transcribing speech to text, the application uses the **SpeechRecognition** library. The uploaded audio file (**WAV format**) is processed, and the transcribed text is extracted.
 
 ## License
 This project is licensed under [MIT LICENSE](../LICENSE)
