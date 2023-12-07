@@ -24,11 +24,11 @@ This project aims to develop a multi-modal chatbot application that enables user
 To run the project locally, follow these steps:
 1.	Clone the repository:
 
-    ``` git clone https://github.com/sheetalvarsh/VoiceBot_HCI584.git ```
+    ``` git clone https://github.com/sheetalvarsh/VoiceBot.git ```
 
 2.	Change into the project directory:
 
-    ``` cd VoiceBot_HCI584 ```
+    ``` cd VoiceBot ```
 
 3.	Install the required packages
 

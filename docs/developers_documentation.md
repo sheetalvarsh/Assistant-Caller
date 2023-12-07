@@ -28,12 +28,11 @@ To set up the development environment, follow these steps:
 
 1. Clone or download the project repository to your local machine
 
-    `git clone https://github.com/sheetalvarsh/VoiceBot_HCI584`
-    Navigate to the project directory.
+    `git clone https://github.com/sheetalvarsh/VoiceBot`
 
-2. Navigate to the project directory.
+2. Navigate to the directory.
 
-    `cd VoiceBot_HCI584`
+    `cd VoiceBot`
 
 3. Install the required Python packages
 
@@ -91,6 +90,33 @@ Response
 * Error:
     - Status Code: `500`
     - JSON: `{ 'error': <error_message> }`
+
+## Dealing with Audio Data
+
+### Storage and Generation
+
+1. Folder Structure:
+    - Audio files are stored in a dedicated folder based on the user's session. This ensures a clear organization of audio data.
+
+2. Session-based Storage:
+    - With each session, a new set of audio files is generated and stored. This helps maintain a separation of audio data between different users or sessions.
+
+3. File Limitation:
+    - To optimize storage and prevent excessive resource usage, the application follows a policy where only the latest 5 audio files are retained. When a new audio file is generated, the oldest one is removed from the system.
+
+## Handling Audio Data
+
+1. Audio File Format:
+    - The application utilizes the **OGG format** for storing audio files. This format is commonly used for efficient audio compression.
+
+2. Audio Processing:
+    - **Pydub**, an audio processing library, is employed for handling audio files. It allows for various operations such as format conversion, channel adjustment, and sample rate modification.
+
+3. Text-to-Speech (TTS):
+    - When converting text to speech, the **gTTS (Google Text-to-Speech)** library is utilized. The generated audio file is then saved in the corresponding session folder.
+
+4. Speech-to-Text (STT):
+    - For transcribing speech to text, the application uses the **SpeechRecognition** library. The uploaded audio file is processed, and the transcribed text is extracted.
 
 ## License
 This project is licensed under [MIT LICENSE](../LICENSE)
