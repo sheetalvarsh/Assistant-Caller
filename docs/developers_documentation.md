@@ -21,6 +21,8 @@ The project follows a typical Flask application structure. Here's a brief overvi
 * **templates/**: HTML templates for rendering web pages.
 * **requirements.txt**: List of Python dependencies.
 
+![Alt text](<./document_images/project_structure.png>)
+
 ## Installation
 To set up the development environment, follow these steps:
 

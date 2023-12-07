@@ -34,14 +34,44 @@ To run the project locally, follow these steps:
 
     ``` pip install -r requirements.txt ```
 
-##  Usage
+## Using the Application
 
-*	Start the Flask application:
-    ``` python app.py ```
+### Text-to-Speech
 
-*	Open your web browser and go to http://127.0.0.1:5000.
+1. Launch the application by running the following command:
 
-*	Interact with the chatbot by entering text messages or using the microphone button for speech input.
+    `python app.py`
+
+2. Open your web browser and go to http://127.0.0.1:5000/.
+
+![Alt text](./docs/images/chatbot_view.png)
+
+3. In the input field labeled "Type your message," enter the text you want to convert to speech.
+
+![Alt text](./docs/images/text_to_speech_message.png)
+
+4. Click the "Send" button (paper plane icon) or press ENTER to generate the audio message.
+5. Listen to the audio message using the playback controls.
+6. The inputted message will also be displayed in the bubble.
+
+![Alt text](./docs/images/bubble_message.png)
+
+### Speech-to-Text
+
+1. Follow the steps above to launch the application.
+2. Click the microphone icon to start recording your speech message.
+
+![Alt text](<./docs/images/record_speech.png>)
+
+3. Speak clearly into your microphone.
+4. Click the "Stop" button (square icon) to stop recording.
+
+![Alt text](<./docs/images/stop_recording.png>)
+
+5. The application will transcribe your speech into text and display it on the page.
+6. If the speech is not clear, an error message will be displayed.
+
+![Alt text](<./docs/images/error_message.png>)
 
 ## Project Structure
 *   **app.py**: Flask application file containing server-side logic.
